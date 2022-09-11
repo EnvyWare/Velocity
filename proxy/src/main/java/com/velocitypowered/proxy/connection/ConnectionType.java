@@ -46,6 +46,7 @@ public interface ConnectionType {
    * Adds properties to the {@link GameProfile} if required. If any properties
    * are added, the returned {@link GameProfile} will be a copy.
    *
+   * @param version The protocolVersion {@link ProtocolVersion}
    * @param original The original {@link GameProfile}
    * @param forwardingType The Velocity {@link PlayerInfoForwarding}
    * @return The {@link GameProfile} with the properties added in.
