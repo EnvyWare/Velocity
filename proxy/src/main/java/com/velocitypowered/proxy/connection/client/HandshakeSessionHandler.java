@@ -147,7 +147,8 @@ public class HandshakeSessionHandler implements MinecraftSessionHandler {
   }
 
   private ConnectionType getHandshakeConnectionType(Handshake handshake) {
-    if (handshake.getServerAddress().endsWith(ModernForgeConstants.HANDSHAKE_HOSTNAME_TOKEN)
+    if (handshake.getServerAddress().endsWith(ModernForgeConstants
+            .getHandshakeHostnameToken(handshake.getProtocolVersion()))
         && handshake.getProtocolVersion().compareTo(ProtocolVersion.MINECRAFT_1_13) >= 0) {
       return ConnectionTypes.MODERN_FORGE;
     } else if (handshake.getServerAddress().endsWith(LegacyForgeConstants.HANDSHAKE_HOSTNAME_TOKEN)

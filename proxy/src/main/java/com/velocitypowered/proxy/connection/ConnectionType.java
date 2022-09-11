@@ -17,6 +17,7 @@
 
 package com.velocitypowered.proxy.connection;
 
+import com.velocitypowered.api.network.ProtocolVersion;
 import com.velocitypowered.api.util.GameProfile;
 import com.velocitypowered.proxy.config.PlayerInfoForwarding;
 import com.velocitypowered.proxy.connection.backend.BackendConnectionPhase;
@@ -49,6 +50,6 @@ public interface ConnectionType {
    * @param forwardingType The Velocity {@link PlayerInfoForwarding}
    * @return The {@link GameProfile} with the properties added in.
    */
-  GameProfile addGameProfileTokensIfRequired(GameProfile original,
+  GameProfile addGameProfileTokensIfRequired(ProtocolVersion version, GameProfile original,
                                              PlayerInfoForwarding forwardingType);
 }

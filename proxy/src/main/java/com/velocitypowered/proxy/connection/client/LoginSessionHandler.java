@@ -237,7 +237,7 @@ public class LoginSessionHandler implements MinecraftSessionHandler {
 
   private void initializePlayer(GameProfile profile, boolean onlineMode) {
     // Some connection types may need to alter the game profile.
-    profile = mcConnection.getType().addGameProfileTokensIfRequired(profile,
+    profile = mcConnection.getType().addGameProfileTokensIfRequired(mcConnection.getProtocolVersion(), profile,
         server.getConfiguration().getPlayerInfoForwardingMode());
     GameProfileRequestEvent profileRequestEvent = new GameProfileRequestEvent(inbound, profile,
         onlineMode);

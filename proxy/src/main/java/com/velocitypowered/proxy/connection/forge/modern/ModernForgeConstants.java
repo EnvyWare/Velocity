@@ -17,6 +17,8 @@
 
 package com.velocitypowered.proxy.connection.forge.modern;
 
+import com.velocitypowered.api.network.ProtocolVersion;
+
 /**
  * Constants for use with Modern Forge systems.
  */
@@ -25,14 +27,18 @@ public class ModernForgeConstants {
   /**
    * The version for forge handshakes.
    */
-  public static final String VERSION = "FML2";
+  public static String getVersion(ProtocolVersion protocolVersion) {
+    return protocolVersion.getProtocol() >= ProtocolVersion.MINECRAFT_1_18.getProtocol() ? "FML3" : "FML2";
+  }
 
   /**
    * Clients attempting to connect to 1.13+ Forge servers will have
    * this token appended to the hostname in the initial handshake
    * packet.
    */
-  public static final String HANDSHAKE_HOSTNAME_TOKEN = '\0' + VERSION + '\0';
+  public static String getHandshakeHostnameToken(ProtocolVersion version) {
+    return '\0' + getVersion(version) + '\0';
+  }
 
   /**
    * The channel for forge handshakes.
@@ -45,7 +51,7 @@ public class ModernForgeConstants {
   public static final String LOGIN_WRAPPER_CHANNEL = "fml:loginwrapper";
 
   /**
-   * The channel for forge play.
+   * The channel for forge play.y
    */
   public static final String PLAY_CHANNEL = "fml:play";
 
